@@ -1,0 +1,5 @@
+[
+	"save/([a-z0-9]+)(/|) controller=default,action=save,url=$1",
+	"([a-z0-9]+)$ controller=default,action=create,url=$1",
+	"(\\w+)/(\\w+)/(.*)$ controller=$1,action=$2,params=$3"
+]
