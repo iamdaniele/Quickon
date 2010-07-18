@@ -1,5 +1,7 @@
 {
+	"label": "My laptop",
 	"host": "default",
+	"environment": "devel",
 	"database": {
 		"driver": "mysql",
 		"name": "localdb",

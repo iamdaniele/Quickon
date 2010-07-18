@@ -1,4 +1,6 @@
 {
+	"label": "Production environment",
+	"environment": "live",
 	"host": "myapp.example.com",
 	"database": {
 		"driver": "mysql",
