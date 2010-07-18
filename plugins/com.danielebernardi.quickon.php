@@ -1,8 +1,9 @@
 <?
 class QuickonPlugin {
 
-	var $configProperties = array('database' => array('driver', 'name', 'host', 'user', 'pass'));
-	var $config;
+	protected $configProperties = array('database' => array('driver', 'name', 'host', 'user', 'pass'));
+	protected $config;
+	protected $environment = null;
 	
 	const CONF_PATH = '../conf/';
 
@@ -51,6 +52,31 @@ class QuickonPlugin {
 				throw new Exception("The following properties are missing for section '{$key}': " . implode(',', $missingProperties));
 			}
 		}
+		
+		if (isset($this->config["environment"])) {
+			
+			switch (strtolower($this->config["environment"])) {
+				case "development":
+				case "devel":
+				case "dev":
+					$this->environment = "development";
+				break;
+				
+				case "testing":
+				case "staging":
+					$this->environment = "staging";
+				break;
+				
+				case "production":
+				case "live":
+					$this->environment = "live";
+				break;
+			}
+		}
 	}
+	
+	function isDevelopment() { return $this->environment == "development"; }
+	function isStaging() { return $this->environment == "staging"; }
+	function isLive() { return $this->environment == "live"; }
 	
 }
